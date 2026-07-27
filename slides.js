@@ -16,7 +16,7 @@ const slides = [
             "Recognize attorney tactics",
             "Understand objections",
             "Know when evidence becomes inadmissible",
-            "Properly present reports and bodycam evidence",
+            "Properly present reports",
             "Maintain courtroom professionalism"
         ],
 
