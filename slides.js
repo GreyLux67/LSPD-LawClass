@@ -10,14 +10,10 @@ const slides = [
         body: "By the end of this class, you should be able to:",
 
         bullets: [
-            "Explain every stage of a court case",
-            "Understand the responsibilities of police officers during court",
-            "Properly testify as a witness",
-            "Recognize attorney tactics",
-            "Understand objections",
-            "Know when evidence becomes inadmissible",
-            "Properly present reports",
-            "Maintain courtroom professionalism"
+            "Explain the Fourth Amendment",
+            "Define reasonable suspicion",
+            "Define probable cause",
+            "Recognize lawful and unlawful searches"
         ],
 
         quote: "",
@@ -30,52 +26,28 @@ const slides = [
     },
 
     {
-        eyebrow: "LSPD Law Class",
+        eyebrow: "MODULE 1",
 
-        title: "Table of Contents",
+        title: "Constitutional Law",
 
-        subtitle: "",
+        subtitle: "The Fourth Amendment",
 
-        body: "",
+        body: "The Fourth Amendment protects people from unreasonable searches and seizures.",
 
         bullets: [
-            "Legal Information",
-            "General Terms",
-            "Injunctions",
-            "Court Procedures",
-            "Court Terms",
-            "Objections"
-            "Motions"
+            "Government action must be reasonable",
+            "Some searches require a warrant",
+            "Some warrant exceptions apply",
+            "Evidence may be excluded after an unlawful search"
         ],
 
-        quote: "",
+        quote: "The right of the people to be secure in their persons, houses, papers, and effects shall not be violated.",
 
-        scenario: "",
+        scenario: "An officer stops a driver for speeding. The driver refuses consent to search the vehicle. What additional facts would the officer need before conducting a search?",
 
-        warning: "",
-
-        image: ""
-    },
-
-    {
-        eyebrow: "",
-
-        title: "",
-
-        subtitle: "",
-
-        body: "",
-
-        bullets: [
-          ],
-
-        quote: "",
-
-        scenario: "",
-
-        warning: "",
+        warning: "Nervous behavior by itself does not automatically create probable cause.",
 
         image: ""
     }
-    
+
 ];
