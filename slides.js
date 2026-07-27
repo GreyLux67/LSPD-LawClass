@@ -18,7 +18,6 @@ const slides = [
             "Know when evidence becomes inadmissible",
             "Properly present reports and bodycam evidence",
             "Maintain courtroom professionalism"
-            
         ],
 
         quote: "",
