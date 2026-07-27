@@ -64,7 +64,29 @@ const slides = [
 
         subtitle: "The amount of evidence required to secure a conviction or judgment",
 
-        body: "Levels of Burdens of Proof\n\nI. Reasonable Suspicion\nII. Probable Cause\nIII. Preponderance of Evidence - Civil Suit\nThe applicant must show a preponderance of evidence which is; that it is more likely than not that the plaintiff or applicant proved their narrative.\nIV. Beyond a Reasonable Doubt - Criminal Case\nAll charges and certain appeals escalated to court must be prepared to demonstrate that their evidence for conviction is beyond a reasonable doubt, which is the highest standard of evidence. The prosecution must be able to articulate that there is no other reasonable explanation that can come from the evidence presented at trial, and the Court must be virtually certain of the defendant's guilt in order to render a guilty verdict.",
+        body: "",
+
+        bullets: [
+
+        ],
+
+        quote: "",
+
+        scenario: "",
+
+        warning: "",
+
+        image: ""
+    },
+
+    {
+        eyebrow: "Module 1 Legal Information",
+
+        title: "Burdens of Proof",
+
+        subtitle: "",
+
+        body: "Levels of Burdens of Proof\n\n<strong>I. Reasonable Suspicion</strong>\n<strong>II. Probable Cause</strong>\n<strong>III. Preponderance of Evidence - Civil Suit</strong>\nThe applicant must show a preponderance of evidence which is; that it is more likely than not that the plaintiff or applicant proved their narrative.\n<strong>IV. Beyond a Reasonable Doubt - Criminal Case</strong>\nAll charges and certain appeals escalated to court must be prepared to demonstrate that their evidence for conviction is beyond a reasonable doubt, which is the highest standard of evidence. The prosecution must be able to articulate that there is no other reasonable explanation that can come from the evidence presented at trial, and the Court must be virtually certain of the defendant's guilt in order to render a guilty verdict.",
 
         bullets: [
 
