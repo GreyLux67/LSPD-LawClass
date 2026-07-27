@@ -1,214 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LSPD Academy</title>
+    <title>JavaScript Test</title>
+    <style>
+        body {
+            background: black;
+            color: lime;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 150px;
+        }
 
-<style>
-body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#0d1b2a;
-    color:white;
-}
-
-header{
-    background:#1b263b;
-    padding:20px;
-    text-align:center;
-    font-size:32px;
-    font-weight:bold;
-    border-bottom:3px solid #3a86ff;
-}
-
-.page{
-    display:none;
-    padding:40px;
-    max-width:1100px;
-    margin:auto;
-}
-
-.active{
-    display:block;
-}
-
-.card{
-    background:#1b263b;
-    padding:25px;
-    margin-top:20px;
-    border-radius:10px;
-}
-
-button{
-    background:#3a86ff;
-    color:white;
-    border:none;
-    padding:15px 30px;
-    font-size:18px;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:25px;
-    margin-right:10px;
-}
-
-button:hover{
-    background:#5298ff;
-}
-
-h2{
-    color:#67b3ff;
-}
-
-ul{
-    line-height:2;
-    font-size:18px;
-}
-
-.progress{
-    width:100%;
-    background:#333;
-    border-radius:10px;
-    margin-top:20px;
-}
-
-.bar{
-    width:20%;
-    background:#3a86ff;
-    padding:8px;
-    border-radius:10px;
-    text-align:center;
-}
-</style>
-
+        #clock {
+            font-size: 72px;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-Los Santos Police Department Academy
-</header>
+<h1>JavaScript Test</h1>
 
-<!-- HOME PAGE -->
-<div id="home" class="page active">
-
-<h2>Welcome, Cadet</h2>
-
-<div class="card">
-
-<h3>Law Training Portal</h3>
-
-<p>
-Welcome to the Los Santos Police Department Academy.
-Complete each lesson in order before moving to practical scenarios.
-</p>
-
-<div class="progress">
-<div class="bar">0%</div>
-</div>
-
-<br>
-
-<button onclick="showPage('lesson1')">
-Begin Training
-</button>
-
-</div>
-
-</div>
-
-<!-- LESSON 1 -->
-<div id="lesson1" class="page">
-
-<h2>Lesson 1 - Constitutional Law</h2>
-
-<div class="card">
-
-<h3>Learning Objectives</h3>
-
-<ul>
-<li>Understand the U.S. Constitution.</li>
-<li>Understand why officers must follow constitutional law.</li>
-<li>Learn the 1st, 4th, 5th, 6th, and 14th Amendments.</li>
-</ul>
-
-</div>
-
-<div class="card">
-
-<h3>1st Amendment</h3>
-
-<p>
-Protects freedom of speech, religion, press, assembly, and petition.
-Police cannot arrest someone simply because they criticize law enforcement.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>4th Amendment</h3>
-
-<p>
-Protects people from unreasonable searches and seizures.
-Officers generally need probable cause or another legal exception before searching someone.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>5th Amendment</h3>
-
-<p>
-Protects against self-incrimination.
-This is one reason Miranda warnings exist.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Scenario</h3>
-
-<p>
-
-A person records you during a traffic stop while standing on the sidewalk.
-
-Should you arrest them?
-
-<strong>No.</strong>
-
-Recording police in public is generally protected by the First Amendment as long as they are not interfering.
-
-</p>
-
-</div>
-
-<button onclick="showPage('home')">
-⬅ Home
-</button>
-
-<button onclick="alert('Lesson 2 coming next!')">
-Next Lesson ➜
-</button>
-
-</div>
+<div id="clock">Loading...</div>
 
 <script>
-
-function showPage(page){
-
-document.querySelectorAll(".page").forEach(p=>{
-p.classList.remove("active");
-});
-
-document.getElementById(page).classList.add("active");
-
-window.scrollTo(0,0);
-
+function updateClock() {
+    document.getElementById("clock").innerHTML =
+        new Date().toLocaleTimeString();
 }
 
+updateClock();
+setInterval(updateClock, 1000);
 </script>
 
 </body>
