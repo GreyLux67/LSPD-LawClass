@@ -30,28 +30,51 @@ const slides = [
     },
 
     {
-        eyebrow: "MODULE 1",
+        eyebrow: "LSPD Law Class",
 
-        title: "Constitutional Law",
+        title: "Table of Contents",
 
-        subtitle: "The Fourth Amendment",
+        subtitle: "",
 
-        body: "The Fourth Amendment protects people from unreasonable searches and seizures.",
+        body: "",
 
         bullets: [
-            "Government action must be reasonable",
-            "Some searches require a warrant",
-            "Some warrant exceptions apply",
-            "Evidence may be excluded after an unlawful search"
+            "Legal Information",
+            "General Terms",
+            "Injunctions",
+            "Court Procedures",
+            "Court Terms",
+            "Objections"
+            "Motions"
         ],
 
-        quote: "The right of the people to be secure in their persons, houses, papers, and effects shall not be violated.",
+        quote: "",
 
-        scenario: "An officer stops a driver for speeding. The driver refuses consent to search the vehicle. What additional facts would the officer need before conducting a search?",
+        scenario: "",
 
-        warning: "Nervous behavior by itself does not automatically create probable cause.",
+        warning: "",
 
         image: ""
-    }
+    },
 
+    {
+        eyebrow: "",
+
+        title: "",
+
+        subtitle: "",
+
+        body: "",
+
+        bullets: [
+          ],
+
+        quote: "",
+
+        scenario: "",
+
+        warning: "",
+
+        image: ""
+}
 ];
