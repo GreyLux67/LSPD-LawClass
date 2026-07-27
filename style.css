@@ -1,142 +1,224 @@
-/* Google Fonts Import for clean, projector-friendly typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+/* ---------- GENERAL ---------- */
 
-/* LSPD Custom Color Palette */
-:root {
-    --lspd-blue: #1e40af;
-    --lspd-blue-hover: #1e3a8a;
-    --lspd-blue-text: #3b82f6;
-    --lspd-black: #09090b;
-    --lspd-dark: #18181b;
-    --lspd-border: #27272a;
-    --text-main: #f4f4f5;
-    --text-muted: #a1a1aa;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, Arial, sans-serif;
 }
 
-/* Global Reset & Body Styling */
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--lspd-dark) !important;
-    color: var(--text-main) !important;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden; /* Prevents whole-page scrolling; only the main content scrolls */
+body{
+    background:#0f1724;
+    color:#fff;
+    display:flex;
+    min-height:100vh;
 }
 
-/* Layout Framework */
-.app-container {
-    height: 100vh;
+/* ---------- SIDEBAR ---------- */
+
+#sidebar{
+    width:260px;
+    background:#152238;
+    border-right:2px solid #1e90ff;
+    padding:25px;
 }
 
-/* Sidebar Navigation */
-#sidebar {
-    width: 280px;
-    background-color: var(--lspd-black) !important;
-    border-right-color: var(--lspd-border) !important;
+.logo{
+    text-align:center;
+    margin-bottom:35px;
 }
 
-.sidebar-header h5 {
-    letter-spacing: 2px;
+.logo h2{
+    color:#4da3ff;
+    font-size:34px;
 }
 
-.nav-pills .nav-link {
-    color: var(--text-muted);
-    border-radius: 6px;
-    transition: all 0.2s ease-in-out;
-    padding: 10px 15px;
-    font-weight: 600;
+.logo p{
+    color:#9bb8d6;
+    letter-spacing:3px;
 }
 
-.nav-pills .nav-link:hover {
-    background-color: rgba(30, 64, 175, 0.1);
-    color: var(--text-main);
+/* ---------- NAVIGATION ---------- */
+
+.nav{
+    width:100%;
+    margin-bottom:12px;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#1d314d;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    text-align:left;
+    transition:.25s;
 }
 
-.nav-pills .nav-link.active {
-    background-color: var(--lspd-blue) !important;
-    color: #ffffff !important;
+.nav:hover{
+    background:#2d4f78;
 }
 
-/* Main Content Area */
-.main-content {
-    background-color: var(--lspd-dark);
-    scroll-behavior: smooth;
+.nav.active{
+    background:#1e90ff;
 }
 
-/* Card & Container Overrides */
-.bg-black {
-    background-color: var(--lspd-black) !important;
+/* ---------- MAIN CONTENT ---------- */
+
+#content{
+    flex:1;
+    padding:40px;
 }
 
-.border-secondary {
-    border-color: var(--lspd-border) !important;
+header{
+    margin-bottom:35px;
 }
 
-.card {
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+header h1{
+    font-size:38px;
+    margin-bottom:6px;
 }
 
-/* Button Overrides */
-.btn-primary {
-    background-color: var(--lspd-blue);
-    border-color: var(--lspd-blue);
-    font-weight: 600;
+header p{
+    color:#8aa7c7;
 }
 
-.btn-primary:hover {
-    background-color: var(--lspd-blue-hover);
-    border-color: var(--lspd-blue-hover);
+/* ---------- PROGRESS BAR ---------- */
+
+#progressContainer{
+    margin-top:20px;
+    width:100%;
+    height:12px;
+    background:#1d314d;
+    border-radius:100px;
+    overflow:hidden;
 }
 
-.btn-outline-secondary {
-    color: var(--text-muted);
-    border-color: var(--lspd-border);
+#progressBar{
+    width:15%;
+    height:100%;
+    background:#1e90ff;
+    transition:.4s;
 }
 
-.btn-outline-secondary:hover {
-    background-color: var(--lspd-border);
-    color: var(--text-main);
+/* ---------- PAGE ANIMATION ---------- */
+
+.page{
+    display:none;
+    animation:fade .35s ease;
 }
 
-/* Progress Bar Styling */
-.progress {
-    background-color: var(--lspd-border) !important;
-    border-radius: 4px;
+.page.active{
+    display:block;
 }
 
-.progress-bar {
-    background-color: var(--lspd-blue-text) !important;
-    transition: width 0.4s ease;
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(15px);
 }
 
-/* Typography Utilities */
-.text-primary {
-    color: var(--lspd-blue-text) !important; 
+to{
+opacity:1;
+transform:translateY(0);
 }
 
-.text-muted {
-    color: var(--text-muted) !important;
 }
 
-.tracking-wider {
-    letter-spacing: 0.1em;
+/* ---------- CARDS ---------- */
+
+.card{
+
+background:#16253c;
+
+padding:25px;
+
+margin-top:25px;
+
+border-radius:12px;
+
+border-left:5px solid #1e90ff;
+
+box-shadow:0 10px 25px rgba(0,0,0,.30);
+
 }
 
-/* Custom Scrollbar for Webkit Browsers */
-::-webkit-scrollbar {
-    width: 8px;
+.card h3{
+
+margin-bottom:15px;
+
+color:#61b1ff;
+
 }
 
-::-webkit-scrollbar-track {
-    background: var(--lspd-dark);
+.card p{
+
+line-height:1.7;
+
+color:#d7e5f6;
+
 }
 
-::-webkit-scrollbar-thumb {
-    background: var(--lspd-border);
-    border-radius: 4px;
+.card ul{
+
+margin-left:20px;
+
+line-height:2;
+
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #3f3f46;
+/* ---------- FOOTER ---------- */
+
+footer{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-top:40px;
+
+}
+
+/* ---------- BUTTONS ---------- */
+
+footer button{
+
+padding:14px 28px;
+
+border:none;
+
+border-radius:8px;
+
+background:#1e90ff;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+footer button:hover{
+
+background:#4da3ff;
+
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:900px){
+
+body{
+flex-direction:column;
+}
+
+#sidebar{
+width:100%;
+border-right:none;
+border-bottom:2px solid #1e90ff;
+}
+
 }
