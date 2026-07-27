@@ -7,6 +7,10 @@
     <title>LSPD Projector</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         html,
         body {
             width: 100%;
@@ -24,16 +28,89 @@
             justify-content: center;
         }
 
-        h1 {
-            font-size: 8vw;
-            text-align: center;
+        #slide {
+            width: 100vw;
+            height: 100vh;
+            padding: 7vh 8vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #eyebrow {
+            margin: 0 0 2vh;
+            color: #55b9ff;
+            font-size: clamp(14px, 1.7vw, 26px);
+            font-weight: bold;
+            letter-spacing: 0.18em;
+        }
+
+        #title {
+            margin: 0;
+            font-size: clamp(42px, 7vw, 100px);
+            line-height: 1;
+        }
+
+        #subtitle {
+            margin: 2vh 0 4vh;
+            color: #a8c5df;
+            font-size: clamp(20px, 3vw, 44px);
+        }
+
+        #bullets {
+            margin: 0;
+            padding-left: 1.2em;
+            font-size: clamp(20px, 2.6vw, 40px);
+            line-height: 1.5;
+        }
+
+        #slideNumber {
+            position: fixed;
+            right: 3vw;
+            bottom: 3vh;
+            color: #6f8ca8;
+            font-size: clamp(12px, 1.3vw, 20px);
         }
     </style>
 </head>
 
 <body>
 
-    <h1>PROJECTOR TEST</h1>
+    <main id="slide">
+        <p id="eyebrow"></p>
+        <h1 id="title"></h1>
+        <p id="subtitle"></p>
+        <ul id="bullets"></ul>
+    </main>
+
+    <div id="slideNumber"></div>
+
+    <script src="slides.js?v=1"></script>
+
+    <script>
+        const currentSlide = 0;
+        const slide = slides[currentSlide];
+
+        document.getElementById("eyebrow").textContent =
+            slide.eyebrow || "";
+
+        document.getElementById("title").textContent =
+            slide.title || "";
+
+        document.getElementById("subtitle").textContent =
+            slide.subtitle || "";
+
+        const bullets = document.getElementById("bullets");
+
+        (slide.bullets || []).forEach(function (bulletText) {
+            const item = document.createElement("li");
+            item.textContent = bulletText;
+            bullets.appendChild(item);
+        });
+
+        document.getElementById("slideNumber").textContent =
+            "Slide " + (currentSlide + 1) + " / " + slides.length;
+    </script>
 
 </body>
 </html>
