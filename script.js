@@ -1,4 +1,3 @@
-// All lesson pages in order
 const pages = [
     "dashboard",
     "constitution",
@@ -11,18 +10,14 @@ const pages = [
 
 let currentPage = 0;
 
-// Display a page
 function showPage(id){
 
-    // Hide every page
     document.querySelectorAll(".page").forEach(page=>{
         page.classList.remove("active");
     });
 
-    // Show selected page
     document.getElementById(id).classList.add("active");
 
-    // Highlight navigation button
     document.querySelectorAll(".nav").forEach(btn=>{
         btn.classList.remove("active");
     });
@@ -31,65 +26,22 @@ function showPage(id){
 
     currentPage = pages.indexOf(id);
 
-    updateProgress();
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    document.getElementById("progressBar").style.width =
+        ((currentPage)/(pages.length-1))*100 + "%";
 }
 
-// Next Lesson
-function nextPage(){
-
-    if(currentPage < pages.length-1){
-
-        currentPage++;
-
-        showPage(pages[currentPage]);
-
-    }
-
-}
-
-// Previous Lesson
-function previousPage(){
-
-    if(currentPage > 0){
-
-        currentPage--;
-
-        showPage(pages[currentPage]);
-
-    }
-
-}
-
-// Progress Bar
-function updateProgress(){
-
-    const percent = ((currentPage)/(pages.length-1))*100;
-
-    document.getElementById("progressBar").style.width = percent + "%";
-
-}
-
-// Keyboard Controls
-document.addEventListener("keydown",function(e){
-
-    if(e.key==="ArrowRight" || e.code==="Space"){
-
-        nextPage();
-
-    }
-
-    if(e.key==="ArrowLeft"){
-
-        previousPage();
-
-    }
-
-});
-
-// Initialize
+// Show first page
 showPage("dashboard");
+
+// Automatically advance every 5 seconds
+setInterval(function(){
+
+    currentPage++;
+
+    if(currentPage >= pages.length){
+        currentPage = 0;
+    }
+
+    showPage(pages[currentPage]);
+
+}, 5000);
