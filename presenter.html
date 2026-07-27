@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>LSPD Presenter</title>
 
     <style>
@@ -47,91 +48,118 @@
             margin-top: 25px;
             color: #9fb5cc;
         }
+
+        #projectorUrl {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        .divider {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px solid #334155;
+        }
     </style>
 </head>
+
 <body>
 
-<h1>LSPD Academy Presenter</h1>
+    <h1>LSPD Academy Presenter</h1>
 
-<h2 id="currentTitle"></h2>
+    <h2 id="currentTitle"></h2>
 
-<button onclick="previousSlide()">◀ Previous</button>
-<button onclick="nextSlide()">Next ▶</button>
+    <button onclick="previousSlide()">◀ Previous</button>
+    <button onclick="nextSlide()">Next ▶</button>
 
-<div id="slideCount"></div>
+    <div id="slideCount"></div>
 
-<script src="slides.js?v=2"></script>
+    <hr class="divider">
 
-<script>
+    <h3>Projector URL</h3>
 
-let currentSlide = 0;
+    <input
+        id="projectorUrl"
+        type="text"
+        readonly
+    >
 
-function updateDisplay(){
+    <br><br>
 
-    document.getElementById("currentTitle").textContent =
-        slides[currentSlide].title;
+    <button onclick="copyProjectorUrl()">
+        Copy Projector URL
+    </button>
 
-    document.getElementById("slideCount").textContent =
-        "Slide " + (currentSlide + 1) + " of " + slides.length;
+    <script src="slides.js?v=2"></script>
 
-}
+    <script>
+        let currentSlide =
+            parseInt(localStorage.getItem("currentSlide") || "0");
 
-function nextSlide(){
+        if (
+            currentSlide < 0 ||
+            currentSlide >= slides.length
+        ) {
+            currentSlide = 0;
+        }
 
-    if(currentSlide < slides.length - 1){
-        currentSlide++;
-    }
+        function updateDisplay() {
+            document.getElementById("currentTitle").textContent =
+                slides[currentSlide].title;
 
-    localStorage.setItem("currentSlide", currentSlide);
+            document.getElementById("slideCount").textContent =
+                "Slide " + (currentSlide + 1) +
+                " of " + slides.length;
 
-    updateDisplay();
+            const url =
+                "https://greylux67.github.io/LSPD-LawClass/projector.html?slide=" +
+                (currentSlide + 1);
 
-}
+            document.getElementById("projectorUrl").value = url;
+        }
 
-function previousSlide(){
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+            }
 
-    if(currentSlide > 0){
-        currentSlide--;
-    }
+            localStorage.setItem(
+                "currentSlide",
+                currentSlide
+            );
 
-    localStorage.setItem("currentSlide", currentSlide);
+            updateDisplay();
+        }
 
-    updateDisplay();
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+            }
 
-}
+            localStorage.setItem(
+                "currentSlide",
+                currentSlide
+            );
 
-<hr style="margin:30px 0;">
+            updateDisplay();
+        }
 
-<h3>Projector URL</h3>
+        async function copyProjectorUrl() {
+            const box =
+                document.getElementById("projectorUrl");
 
-<input
-    id="projectorUrl"
-    style="width:100%;padding:12px;font-size:16px;"
-    readonly>
+            try {
+                await navigator.clipboard.writeText(box.value);
+                alert("Projector URL copied!");
+            } catch (error) {
+                box.select();
+                document.execCommand("copy");
+                alert("Projector URL copied!");
+            }
+        }
 
-<br><br>
-
-<button onclick="copyProjectorUrl()">
-    Copy Projector URL
-</button>
-updateDisplay();
-const url =
-    "https://greylux67.github.io/LSPD-LawClass/projector.html?slide="
-    + (currentSlide + 1);
-
-document.getElementById("projectorUrl").value = url;
-
-    function copyProjectorUrl(){
-
-    const box =
-        document.getElementById("projectorUrl");
-
-    box.select();
-
-    navigator.clipboard.writeText(box.value);
-
-    alert("Projector URL copied!");
-</script>
+        updateDisplay();
+    </script>
 
 </body>
 </html>
