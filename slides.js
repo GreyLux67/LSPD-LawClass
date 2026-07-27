@@ -3,7 +3,7 @@ const slides = [
         eyebrow: "LOS SANTOS POLICE DEPARTMENT",
         title: "Law Class",
         subtitle: "Course Objectives",
-        text: "By the end of this class you should be able to",
+        body: "By the end of this class you should be able to",
         bullets: [
             "Constitutional Law",
             "Search and Seizure",
