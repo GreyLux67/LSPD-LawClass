@@ -1,0 +1,142 @@
+/* Google Fonts Import for clean, projector-friendly typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* LSPD Custom Color Palette */
+:root {
+    --lspd-blue: #1e40af;
+    --lspd-blue-hover: #1e3a8a;
+    --lspd-blue-text: #3b82f6;
+    --lspd-black: #09090b;
+    --lspd-dark: #18181b;
+    --lspd-border: #27272a;
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+}
+
+/* Global Reset & Body Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--lspd-dark) !important;
+    color: var(--text-main) !important;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevents whole-page scrolling; only the main content scrolls */
+}
+
+/* Layout Framework */
+.app-container {
+    height: 100vh;
+}
+
+/* Sidebar Navigation */
+#sidebar {
+    width: 280px;
+    background-color: var(--lspd-black) !important;
+    border-right-color: var(--lspd-border) !important;
+}
+
+.sidebar-header h5 {
+    letter-spacing: 2px;
+}
+
+.nav-pills .nav-link {
+    color: var(--text-muted);
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    padding: 10px 15px;
+    font-weight: 600;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: rgba(30, 64, 175, 0.1);
+    color: var(--text-main);
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--lspd-blue) !important;
+    color: #ffffff !important;
+}
+
+/* Main Content Area */
+.main-content {
+    background-color: var(--lspd-dark);
+    scroll-behavior: smooth;
+}
+
+/* Card & Container Overrides */
+.bg-black {
+    background-color: var(--lspd-black) !important;
+}
+
+.border-secondary {
+    border-color: var(--lspd-border) !important;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Button Overrides */
+.btn-primary {
+    background-color: var(--lspd-blue);
+    border-color: var(--lspd-blue);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: var(--lspd-blue-hover);
+    border-color: var(--lspd-blue-hover);
+}
+
+.btn-outline-secondary {
+    color: var(--text-muted);
+    border-color: var(--lspd-border);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--lspd-border);
+    color: var(--text-main);
+}
+
+/* Progress Bar Styling */
+.progress {
+    background-color: var(--lspd-border) !important;
+    border-radius: 4px;
+}
+
+.progress-bar {
+    background-color: var(--lspd-blue-text) !important;
+    transition: width 0.4s ease;
+}
+
+/* Typography Utilities */
+.text-primary {
+    color: var(--lspd-blue-text) !important; 
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.tracking-wider {
+    letter-spacing: 0.1em;
+}
+
+/* Custom Scrollbar for Webkit Browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--lspd-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--lspd-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+}
