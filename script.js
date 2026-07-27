@@ -1,91 +1,95 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = Array.from(document.querySelectorAll('#academyNav .nav-link'));
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const pageTitle = document.getElementById('pageTitle');
-    const progressBar = document.getElementById('progressBar');
-    const progressText = document.getElementById('progressText');
-    const slideIndicator = document.getElementById('slideIndicator');
-    const fullscreenBtn = document.getElementById('fullscreenBtn');
+// All lesson pages in order
+const pages = [
+    "dashboard",
+    "constitution",
+    "search",
+    "traffic",
+    "miranda",
+    "caseLaw",
+    "scenarios"
+];
 
-    let currentIndex = 0;
+let currentPage = 0;
 
-    // Helper to get bootstrap tab instance
-    function showTabByIndex(index) {
-        if (index < 0 || index >= navLinks.length) return;
-        
-        currentIndex = index;
-        const targetLink = navLinks[currentIndex];
-        const tab = new bootstrap.Tab(targetLink);
-        tab.show();
+// Display a page
+function showPage(id){
 
-        updateUI();
+    // Hide every page
+    document.querySelectorAll(".page").forEach(page=>{
+        page.classList.remove("active");
+    });
+
+    // Show selected page
+    document.getElementById(id).classList.add("active");
+
+    // Highlight navigation button
+    document.querySelectorAll(".nav").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    document.querySelectorAll(".nav")[pages.indexOf(id)].classList.add("active");
+
+    currentPage = pages.indexOf(id);
+
+    updateProgress();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+// Next Lesson
+function nextPage(){
+
+    if(currentPage < pages.length-1){
+
+        currentPage++;
+
+        showPage(pages[currentPage]);
+
     }
 
-    // Global helper so HTML buttons (like "Start Training") can navigate
-    window.navigateToModule = function(targetSelector) {
-        const targetIndex = navLinks.findIndex(link => link.getAttribute('data-bs-target') === targetSelector);
-        if (targetIndex !== -1) {
-            showTabByIndex(targetIndex);
-        }
-    };
+}
 
-    // Update Progress, Controls, and Header Title
-    function updateUI() {
-        const activeLink = navLinks[currentIndex];
-        const titleText = activeLink.textContent.trim();
-        pageTitle.textContent = titleText;
+// Previous Lesson
+function previousPage(){
 
-        // Calculate progress percentage
-        const progressPercent = Math.round(((currentIndex + 1) / navLinks.length) * 100);
-        progressBar.style.width = `${progressPercent}%`;
-        progressText.textContent = `${progressPercent}%`;
-        slideIndicator.textContent = `Module ${currentIndex + 1} of ${navLinks.length}`;
+    if(currentPage > 0){
 
-        // Disable/Enable Buttons at boundaries
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex === navLinks.length - 1;
+        currentPage--;
+
+        showPage(pages[currentPage]);
+
     }
 
-    // Sidebar Nav Clicks
-    navLinks.forEach((link, index) => {
-        link.addEventListener('click', () => {
-            currentIndex = index;
-            updateUI();
-        });
-    });
+}
 
-    // Previous / Next Button Click Handlers
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) showTabByIndex(currentIndex - 1);
-    });
+// Progress Bar
+function updateProgress(){
 
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < navLinks.length - 1) showTabByIndex(currentIndex + 1);
-    });
+    const percent = ((currentPage)/(pages.length-1))*100;
 
-    // Keyboard Arrow Hotkeys (Great for FiveM Projectors / Classroom presentations)
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') {
-            if (currentIndex < navLinks.length - 1) showTabByIndex(currentIndex + 1);
-        } else if (e.key === 'ArrowLeft') {
-            if (currentIndex > 0) showTabByIndex(currentIndex - 1);
-        }
-    });
+    document.getElementById("progressBar").style.width = percent + "%";
 
-    // Projector Fullscreen Toggle
-    fullscreenBtn.addEventListener('click', () => {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().catch(err => {
-                alert(`Error enabling fullscreen mode: ${err.message}`);
-            });
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            }
-        }
-    });
+}
 
-    // Initial setup
-    updateUI();
+// Keyboard Controls
+document.addEventListener("keydown",function(e){
+
+    if(e.key==="ArrowRight" || e.code==="Space"){
+
+        nextPage();
+
+    }
+
+    if(e.key==="ArrowLeft"){
+
+        previousPage();
+
+    }
+
 });
+
+// Initialize
+showPage("dashboard");
