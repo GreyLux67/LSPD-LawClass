@@ -76,6 +76,6 @@ const slides = [
         warning: "",
 
         image: ""
-}
+    }
     
 ];
