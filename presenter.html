@@ -82,6 +82,8 @@ function nextSlide(){
         currentSlide++;
     }
 
+    localStorage.setItem("currentSlide", currentSlide);
+
     updateDisplay();
 
 }
@@ -91,6 +93,8 @@ function previousSlide(){
     if(currentSlide > 0){
         currentSlide--;
     }
+
+    localStorage.setItem("currentSlide", currentSlide);
 
     updateDisplay();
 
