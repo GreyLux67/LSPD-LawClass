@@ -120,8 +120,23 @@ function renderSlide(index){
 
 }
 
-// Draw the first slide
-renderSlide(0);
+// Read ?slide= from the URL
+const params = new URLSearchParams(window.location.search);
+
+let slideNumber =
+    parseInt(params.get("slide") || "1");
+
+// Prevent invalid numbers
+if (isNaN(slideNumber) || slideNumber < 1) {
+    slideNumber = 1;
+}
+
+if (slideNumber > slides.length) {
+    slideNumber = slides.length;
+}
+
+// Slides array starts at 0
+renderSlide(slideNumber - 1);
 
 // Check every 250ms for presenter changes
 setInterval(function(){
