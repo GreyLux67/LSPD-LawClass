@@ -86,7 +86,7 @@ const slides = [
 
         subtitle: "",
 
-        body: "<strong>Double Jeoprady</strong>\nProhibits anyone from being prosecuted twice for substantially the same crime\n<strong>Due Process</strong>\nThe guarantee that a defendant will receive a fair and impartial trial and process of the law. No one shall be deprived of life, liberty, or property without the due process of law.",
+        body: "<strong>Double Jeoprady</strong>\nProhibits anyone from being prosecuted twice for substantially the same crime\n<strong>Due Process</strong>\nThe guarantee that a defendant will receive a fair and impartial trial and process of the law. No one shall be deprived of life, liberty, or property without the due process of law.\n<strong>Exigent Circumstances</strong>\nCircumstances that would cause a reasonable person to believe that entry or other relevant action was necessary to prevent physical harm to individuals, the destruction of relevant evidence, or the escape of the suspect.",
 
         bullets: [
 
