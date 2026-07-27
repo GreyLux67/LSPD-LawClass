@@ -63,6 +63,49 @@
             font-size: clamp(20px, 2.6vw, 40px);
             line-height: 1.5;
         }
+        #quote{
+    margin-top:40px;
+    padding:20px;
+    border-left:6px solid #55b9ff;
+    font-style:italic;
+    color:#d8e8f5;
+    font-size:clamp(18px,2vw,32px);
+}
+
+#scenarioBox{
+    margin-top:35px;
+    padding:25px;
+    background:#13263b;
+    border-radius:12px;
+}
+
+#scenarioBox h2{
+    margin-top:0;
+    color:#55b9ff;
+}
+
+#scenario{
+    margin-bottom:0;
+    font-size:clamp(18px,2vw,30px);
+}
+
+#warningBox{
+    margin-top:30px;
+    padding:25px;
+    background:#4d1e1e;
+    border-left:8px solid #ff4d4d;
+    border-radius:12px;
+}
+
+#warningBox h2{
+    margin-top:0;
+    color:#ff6b6b;
+}
+
+#warning{
+    margin-bottom:0;
+    font-size:clamp(18px,2vw,30px);
+}
 
         #slideNumber {
             position: fixed;
@@ -77,11 +120,30 @@
 <body>
 
     <main id="slide">
-        <p id="eyebrow"></p>
-        <h1 id="title"></h1>
-        <p id="subtitle"></p>
-        <ul id="bullets"></ul>
-    </main>
+
+    <p id="eyebrow"></p>
+
+    <h1 id="title"></h1>
+
+    <p id="subtitle"></p>
+
+    <p id="body"></p>
+
+    <ul id="bullets"></ul>
+
+    <blockquote id="quote"></blockquote>
+
+    <div id="scenarioBox">
+        <h2>Scenario</h2>
+        <p id="scenario"></p>
+    </div>
+
+    <div id="warningBox">
+        <h2>Officer Safety</h2>
+        <p id="warning"></p>
+    </div>
+
+</main>
 
     <div id="slideNumber"></div>
 
