@@ -87,30 +87,53 @@
 
     <script src="slides.js?v=1"></script>
 
-    <script>
-        const currentSlide = 0;
-        const slide = slides[currentSlide];
+       <script>
+function renderSlide(index){
 
-        document.getElementById("eyebrow").textContent =
-            slide.eyebrow || "";
+    const slide = slides[index];
 
-        document.getElementById("title").textContent =
-            slide.title || "";
+    if(!slide) return;
 
-        document.getElementById("subtitle").textContent =
-            slide.subtitle || "";
+    document.getElementById("eyebrow").textContent =
+        slide.eyebrow || "";
 
-        const bullets = document.getElementById("bullets");
+    document.getElementById("title").textContent =
+        slide.title || "";
 
-        (slide.bullets || []).forEach(function (bulletText) {
-            const item = document.createElement("li");
-            item.textContent = bulletText;
-            bullets.appendChild(item);
-        });
+    document.getElementById("subtitle").textContent =
+        slide.subtitle || "";
 
-        document.getElementById("slideNumber").textContent =
-            "Slide " + (currentSlide + 1) + " / " + slides.length;
-    </script>
+    const bullets = document.getElementById("bullets");
+
+    bullets.innerHTML = "";
+
+    (slide.bullets || []).forEach(function(text){
+
+        const li = document.createElement("li");
+        li.textContent = text;
+        bullets.appendChild(li);
+
+    });
+
+    document.getElementById("slideNumber").textContent =
+        "Slide " + (index + 1) + " / " + slides.length;
+
+}
+
+// Draw the first slide
+renderSlide(0);
+
+// Check every 250ms for presenter changes
+setInterval(function(){
+
+    const saved =
+        parseInt(localStorage.getItem("currentSlide") || "0");
+
+    renderSlide(saved);
+
+}, 250);
+</script>
+
 
 </body>
 </html>
