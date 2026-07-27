@@ -10,10 +10,14 @@ const slides = [
         body: "By the end of this class, you should be able to:",
 
         bullets: [
-            "Explain the Fourth Amendment",
-            "Define reasonable suspicion",
-            "Define probable cause",
-            "Recognize lawful and unlawful searches"
+           "Explain every stage of a criminal court case",
+           "Understand the responsibilities of police officers during court",
+           "Properly testify as a witness",
+           "Recognize attorney tactics",
+            "Understand objections",
+            "Know when evidence becomes inadmissible",
+            "Properly present reports",
+            "Maintain courtroom professionalism"
         ],
 
         quote: "",
@@ -26,28 +30,56 @@ const slides = [
     },
 
     {
-        eyebrow: "MODULE 1",
+        eyebrow: "LSPD Law Class",
 
-        title: "Constitutional Law",
+        title: "Table of Contents",
 
-        subtitle: "The Fourth Amendment",
+        subtitle: "",
 
-        body: "The Fourth Amendment protects people from unreasonable searches and seizures.",
+        body: "",
 
         bullets: [
-            "Government action must be reasonable",
-            "Some searches require a warrant",
-            "Some warrant exceptions apply",
-            "Evidence may be excluded after an unlawful search"
+            "Legal Information",
+            "General Terms",
+            "Injunctions",
+            "Court Procedure",
+            "Court Terms",
+            "Objections",
+            "Motions"
         ],
 
-        quote: "The right of the people to be secure in their persons, houses, papers, and effects shall not be violated.",
+        quote: "",
 
-        scenario: "An officer stops a driver for speeding. The driver refuses consent to search the vehicle. What additional facts would the officer need before conducting a search?",
+        scenario: "",
 
-        warning: "Nervous behavior by itself does not automatically create probable cause.",
+        warning: "",
+
+        image: ""
+    },
+
+    {
+        eyebrow: "Module 1 Legal Information",
+
+        title: "Burdens of Proof",
+
+        subtitle: "The amount of evidence required to secure a conviction or judgment",
+
+        body: "Levels of Burdens of Proof",
+        "I. Reasonable Suspicion",
+        "II. Probable Cause",
+        "III. Preponderance of Evidence - Civil Suits"
+
+        bullets: [
+
+        ],
+
+        quote: "",
+
+        scenario: "",
+
+        warning: "",
 
         image: ""
     }
-
+    
 ];
