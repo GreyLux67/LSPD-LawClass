@@ -1,247 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LSPD Academy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LSPD Academy Training Portal</title>
 
-    <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0f2138;
+      --panel-2: #142b47;
+      --accent: #2bb8e6;
+      --accent-2: #6dcfff;
+      --text: #f4f8ff;
+      --muted: #a9bdd3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      display: flex;
+    }
+
+    #presentation {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 2.5vh 3vw;
+      background:
+        radial-gradient(circle at top right, rgba(43,184,230,.14), transparent 32%),
+        linear-gradient(135deg, #07111f 0%, #0b1728 100%);
+    }
+
+    header {
+      flex: 0 0 auto;
+      padding-bottom: 1.5vh;
+      border-bottom: 2px solid rgba(43,184,230,.55);
+    }
+
+    .department {
+      font-size: clamp(20px, 3.2vw, 48px);
+      font-weight: 800;
+      letter-spacing: .04em;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin-top: .6vh;
+      color: var(--muted);
+      font-size: clamp(12px, 1.5vw, 22px);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    #progressTrack {
+      height: 1.2vh;
+      min-height: 7px;
+      max-height: 12px;
+      margin-top: 1.4vh;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #1a304b;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .35s ease;
+    }
+
+    #slides {
+      flex: 1 1 auto;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      padding-top: 2vh;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      animation: fade .3s ease;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide h1 {
+      flex: 0 0 auto;
+      color: var(--accent-2);
+      font-size: clamp(25px, 4vw, 58px);
+      line-height: 1.05;
+      margin-bottom: 1.5vh;
+    }
+
+    .slide h2 {
+      color: var(--accent-2);
+      font-size: clamp(18px, 2.4vw, 34px);
+      margin-bottom: 1vh;
+    }
+
+    .grid {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5vw;
+    }
+
+    .grid.one {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      min-height: 0;
+      overflow: hidden;
+      background: linear-gradient(145deg, var(--panel), var(--panel-2));
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      padding: clamp(14px, 2vw, 28px);
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
+    }
+
+    .card p,
+    .card li {
+      font-size: clamp(13px, 1.6vw, 23px);
+      line-height: 1.42;
+    }
+
+    .card ul {
+      padding-left: 1.35em;
+    }
+
+    .card li + li {
+      margin-top: .8vh;
+    }
+
+    .big-message {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(145deg, var(--panel), var(--panel-2));
+      border-radius: 16px;
+      padding: 4vw;
+      font-size: clamp(22px, 3.5vw, 56px);
+      line-height: 1.2;
+      box-shadow: 0 14px 30px rgba(0,0,0,.32);
+    }
+
+    .answer {
+      color: #8fe5ff;
+      font-weight: 700;
+    }
+
+    footer {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.2vh;
+      color: var(--muted);
+      font-size: clamp(11px, 1.2vw, 18px);
+    }
+
+    #slideCounter {
+      font-weight: 700;
+      color: var(--accent-2);
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 820px), (max-height: 620px) {
+      #presentation {
+        padding: 2vh 2.4vw;
+      }
+
+      #slides {
+        padding-top: 1.2vh;
+      }
+
+      .grid {
+        gap: 1vh;
+      }
+
+      .card {
+        padding: 12px 14px;
+        border-radius: 9px;
+      }
+
+      .card p,
+      .card li {
+        line-height: 1.27;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
-<!-- Main Content -->
-<div id="content">
-
-<header>
-
-<h1>Los Santos Police Department</h1>
-
-<p>Cadet Academy Training Portal</p>
-
-<div id="progressContainer">
-    <div id="progressBar"></div>
-</div>
-
-</header>
-
-<!-- Dashboard -->
-
-<section id="dashboard" class="page active">
-
-<h2>Welcome, Cadet</h2>
-
-<div class="card">
-
-<h3>Training Overview</h3>
-
-<p>
-Welcome to the LSPD Cadet Academy.
-
-This portal will guide you through every legal topic required for patrol certification.
-
-Use the menu on the left to navigate between lessons.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Modules</h3>
-
-<ul>
-
-<li>Constitutional Law</li>
-
-<li>Search & Seizure</li>
-
-<li>Traffic Stops</li>
-
-<li>Miranda Rights</li>
-
-<li>Case Law</li>
-
-<li>Scenario Training</li>
-
-</ul>
-
-</div>
-
-</section>
-
-<!-- Constitutional Law -->
-
-<section id="constitution" class="page">
-
-<h2>Constitutional Law</h2>
-
-<div class="card">
-
-<h3>Learning Objectives</h3>
-
-<ul>
-
-<li>Understand constitutional protections.</li>
-
-<li>Apply the Bill of Rights during law enforcement encounters.</li>
-
-<li>Recognize unlawful police actions.</li>
-
-</ul>
-
-</div>
-
-<div class="card">
-
-<h3>Important Amendments</h3>
-
-<ul>
-
-<li>1st Amendment</li>
-
-<li>4th Amendment</li>
-
-<li>5th Amendment</li>
-
-<li>6th Amendment</li>
-
-<li>14th Amendment</li>
-
-</ul>
-
-</div>
-
-</section>
-
-<!-- Search -->
-
-<section id="search" class="page">
-
-<h2>Search & Seizure</h2>
-
-<div class="card">
-
-<h3>Topics Covered</h3>
-
-<ul>
-
-<li>Probable Cause</li>
-
-<li>Reasonable Suspicion</li>
-
-<li>Consent Searches</li>
-
-<li>Vehicle Searches</li>
-
-<li>Search Warrants</li>
-
-</ul>
-
-</div>
-
-</section>
-
-<!-- Traffic -->
-
-<section id="traffic" class="page">
-
-<h2>Traffic Stops</h2>
-
-<div class="card">
-
-<h3>Lesson Topics</h3>
-
-<ul>
-
-<li>Lawful Stops</li>
-
-<li>Officer Safety</li>
-
-<li>Vehicle Contact</li>
-
-<li>Citation Procedures</li>
-
-</ul>
-
-</div>
-
-</section>
-
-<!-- Miranda -->
-
-<section id="miranda" class="page">
-
-<h2>Miranda Rights</h2>
-
-<div class="card">
-
-<p>
-
-Understand when Miranda is required, what constitutes custodial interrogation, and common exceptions.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- Case Law -->
-
-<section id="caseLaw" class="page">
-
-<h2>Case Law</h2>
-
-<div class="card">
-
-<ul>
-
-<li>Terry v. Ohio</li>
-
-<li>Miranda v. Arizona</li>
-
-<li>Carroll Doctrine</li>
-
-<li>Arizona v. Gant</li>
-
-</ul>
-
-</div>
-
-</section>
-
-<!-- Scenarios -->
-
-<section id="scenarios" class="page">
-
-<h2>Scenario Training</h2>
-
-<div class="card">
-
-<p>
-
-Scenario-based discussions and practical application of academy material.
-
-</p>
-
-</div>
-
-</section>
-
-<footer>
-
-<button onclick="previousPage()">
-◀ Previous
-</button>
-
-<button onclick="nextPage()">
-Next ▶
-</button>
-
-</footer>
-
-</div>
-
-<script src="script.js?v=7"></script>
-    
+  <main id="presentation">
+    <header>
+      <div class="department">LOS SANTOS POLICE DEPARTMENT</div>
+      <div class="subtitle">Cadet Academy Training Portal</div>
+      <div id="progressTrack">
+        <div id="progressBar"></div>
+      </div>
+    </header>
+
+    <div id="slides">
+      <section class="slide active">
+        <div class="big-message">
+          <div>
+            <strong>LSPD ACADEMY</strong><br />
+            <span style="color:#6dcfff;">Law Training Program</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <h1>Training Overview</h1>
+        <div class="grid">
+          <div class="card">
+            <h2>Course Purpose</h2>
+            <p>This program introduces the legal principles cadets must understand before beginning patrol duties.</p>
+          </div>
+          <div class="card">
+            <h2>Core Modules</h2>
+            <ul>
+              <li>Constitutional Law</li>
+              <li>Search and Seizure</li>
+              <li>Traffic Stops</li>
+              <li>Miranda Rights</li>
+              <li>Case Law</li>
+              <li>Scenario Training</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <h1>Constitutional Law</h1>
+        <div class="grid">
+          <div class="card">
+            <h2>Learning Objectives</h2>
+            <ul>
+              <li>Understand constitutional protections.</li>
+              <li>Apply the Bill of Rights during police encounters.</li>
+              <li>Recognize actions that may violate civil rights.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Key Amendments</h2>
+            <ul>
+              <li>1st Amendment</li>
+              <li>4th Amendment</li>
+              <li>5th Amendment</li>
+              <li>6th Amendment</li>
+              <li>14th Amendment</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <h1>Search and Seizure</h1>
+        <div class="grid">
+          <div class="card">
+            <h2>Reasonable Suspicion</h2>
+            <p>Specific and articulable facts that reasonably suggest criminal activity may be occurring.</p>
+          </div>
+          <div class="card">
+            <h2>Probable Cause</h2>
+            <p>Facts and circumstances sufficient to lead a reasonable person to believe a crime occurred or evidence will be found.</p>
+          </div>
+          <div class="card">
+            <h2>Common Search Authorities</h2>
+            <ul>
+              <li>Consent</li>
+              <li>Search incident to arrest</li>
+              <li>Vehicle exception</li>
+              <li>Search warrant</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Officer Responsibility</h2>
+            <p>Be able to clearly explain the legal reason for every detention, search, seizure, and arrest.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <h1>Traffic Stops</h1>
+        <div class="grid">
+          <div class="card">
+            <h2>Before the Stop</h2>
+            <ul>
+              <li>Identify a lawful reason for the stop.</li>
+              <li>Notify dispatch when practical.</li>
+              <li>Select a safe stopping location.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>During Contact</h2>
+            <ul>
+              <li>Use clear commands.</li>
+              <li>Maintain awareness of occupants.</li>
+              <li>Explain the reason for the stop.</li>
+              <li>Document enforcement action.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <h1>Miranda Rights</h1>
+        <div class="grid">
+          <div class="card">
+            <h2>Miranda Is Generally Required When</h2>
+            <ul>
+              <li>The person is in custody, and</li>
+              <li>The officer conducts interrogation.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Remember</h2>
+            <p>A person may be detained or arrested without immediately receiving Miranda warnings. The warning becomes important before custodial questioning.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <h1>Important Case Law</h1>
+        <div class="grid">
+          <div class="card">
+            <h2>Terry v. Ohio</h2>
+            <p>Recognized limited investigative stops and protective frisks when legal standards are met.</p>
+          </div>
+          <div class="card">
+            <h2>Miranda v. Arizona</h2>
+            <p>Established safeguards for custodial interrogation.</p>
+          </div>
+          <div class="card">
+            <h2>Arizona v. Gant</h2>
+            <p>Limited certain vehicle searches incident to arrest.</p>
+          </div>
+          <div class="card">
+            <h2>Carroll Doctrine</h2>
+            <p>Permits certain warrantless vehicle searches when probable cause exists.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <h1>Scenario Discussion</h1>
+        <div class="grid one">
+          <div class="card">
+            <h2>Scenario</h2>
+            <p>A person stands on a public sidewalk and records officers conducting a traffic stop. The person remains at a safe distance and does not interfere.</p>
+            <br />
+            <p><strong>Question:</strong> Is recording alone a lawful reason to arrest the person?</p>
+            <br />
+            <p class="answer">Answer: No. Recording police activity in public is generally protected, provided the person does not unlawfully interfere.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="big-message">
+          <div>
+            <strong>END OF INTRODUCTORY MODULE</strong><br />
+            <span style="font-size:.55em;color:#a9bdd3;">Review key legal standards before practical exercises.</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <span>Automatic presentation mode</span>
+      <span id="slideCounter">1 / 8</span>
+    </footer>
+  </main>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const progressBar = document.getElementById("progressBar");
+    const slideCounter = document.getElementById("slideCounter");
+
+    let currentSlide = 0;
+
+    const params = new URLSearchParams(window.location.search);
+    const requestedSeconds = Number(params.get("seconds"));
+    const intervalSeconds =
+      Number.isFinite(requestedSeconds) && requestedSeconds >= 3
+        ? requestedSeconds
+        : 12;
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === currentSlide);
+      });
+
+      const percent = ((currentSlide + 1) / slides.length) * 100;
+      progressBar.style.width = percent + "%";
+      slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function previousSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.code === "Space") {
+        nextSlide();
+      } else if (event.key === "ArrowLeft") {
+        previousSlide();
+      }
+    });
+
+    showSlide(0);
+    setInterval(nextSlide, intervalSeconds * 1000);
+  </script>
 </body>
 </html>
