@@ -1,36 +1,242 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>JavaScript Test</title>
-    <style>
-        body {
-            background: black;
-            color: lime;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 150px;
-        }
-
-        #clock {
-            font-size: 72px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSPD Academy | Training Platform</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-dark text-light">
 
-<h1>JavaScript Test</h1>
+    <div class="app-container d-flex">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="bg-black border-end border-secondary p-3 d-flex flex-column justify-content-between">
+            <div>
+                <div class="sidebar-header text-center pb-3 mb-3 border-bottom border-secondary">
+                    <i class="fa-solid fa-shield-halved text-primary fa-2x mb-2"></i>
+                    <h5 class="fw-bold tracking-wider m-0">LSPD ACADEMY</h5>
+                    <small class="text-muted">Training & Standards</small>
+                </div>
+                <ul class="nav nav-pills flex-column gap-1" id="academyNav" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active w-100 text-start" data-bs-toggle="pill" data-bs-target="#dashboard" type="button"><i class="fa-solid fa-house me-2"></i> Dashboard</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link w-100 text-start" data-bs-toggle="pill" data-bs-target="#constitutional-law" type="button"><i class="fa-solid fa-scale-balanced me-2"></i> Constitutional Law</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link w-100 text-start" data-bs-toggle="pill" data-bs-target="#search-seizure" type="button"><i class="fa-solid fa-magnifying-glass me-2"></i> Search & Seizure</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link w-100 text-start" data-bs-toggle="pill" data-bs-target="#traffic-stops" type="button"><i class="fa-solid fa-car-rear me-2"></i> Traffic Stops</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link w-100 text-start" data-bs-toggle="pill" data-bs-target="#arrest-procedures" type="button"><i class="fa-solid fa-user-shield me-2"></i> Arrest Procedures</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link w-100 text-start" data-bs-toggle="pill" data-bs-target="#miranda-rights" type="button"><i class="fa-solid fa-book-open me-2"></i> Miranda Rights</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link w-100 text-start" data-bs-toggle="pill" data-bs-target="#case-law" type="button"><i class="fa-solid fa-gavel me-2"></i> Case Law</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link w-100 text-start" data-bs-toggle="pill" data-bs-target="#scenarios" type="button"><i class="fa-solid fa-brain me-2"></i> Scenario Training</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link w-100 text-start" data-bs-toggle="pill" data-bs-target="#final-exam" type="button"><i class="fa-solid fa-graduation-cap me-2"></i> Final Review</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-footer pt-3 border-top border-secondary text-center">
+                <button id="fullscreenBtn" class="btn btn-outline-secondary btn-sm w-100"><i class="fa-solid fa-expand me-1"></i> Projector Mode</button>
+            </div>
+        </nav>
 
-<div id="clock">Loading...</div>
+        <!-- Main Content Area -->
+        <main class="main-content flex-grow-1 p-4 overflow-y-auto">
+            <!-- Top Progress & Controls Bar -->
+            <header class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom border-secondary">
+                <div>
+                    <h2 id="pageTitle" class="fw-bold m-0 text-primary">Dashboard</h2>
+                    <small class="text-muted">Los Santos Police Department Officer Training Program</small>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <div style="width: 200px;">
+                        <div class="d-flex justify-content-between mb-1" style="font-size: 0.8rem;">
+                            <span>Progress</span>
+                            <span id="progressText">0%</span>
+                        </div>
+                        <div class="progress bg-secondary" style="height: 6px;">
+                            <div id="progressBar" class="progress-bar bg-primary" role="progressbar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
 
-<script>
-function updateClock() {
-    document.getElementById("clock").innerHTML =
-        new Date().toLocaleTimeString();
-}
+            <!-- Tab Content Modules -->
+            <div class="tab-content" id="academyContent">
+                <!-- 1. Dashboard -->
+                <div class="tab-pane fade show active" id="dashboard" role="tabpanel">
+                    <div class="p-5 mb-4 bg-black border border-secondary rounded-3">
+                        <div class="container-fluid py-3">
+                            <h1 class="display-5 fw-bold text-primary">Welcome, Cadet</h1>
+                            <p class="col-md-8 fs-4 text-secondary">Complete all modules, review tactical procedures, and pass the final evaluation to graduate into active LSPD patrol duty.</p>
+                            <button class="btn btn-primary btn-lg mt-3" onclick="navigateToModule('#constitutional-law')"><i class="fa-solid fa-arrow-right me-2"></i> Start Training</button>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="p-4 bg-black border border-secondary rounded-3 h-100">
+                                <i class="fa-solid fa-book text-primary fa-2x mb-3"></i>
+                                <h4>Structured Learning</h4>
+                                <p class="text-muted">Comprehensive modules covering state penal code, constitutional rights, and operational protocols.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-4 bg-black border border-secondary rounded-3 h-100">
+                                <i class="fa-solid fa-brain text-primary fa-2x mb-3"></i>
+                                <h4>Scenario Drills</h4>
+                                <p class="text-muted">Test your split-second decision making with interactive practical application scenarios.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-4 bg-black border border-secondary rounded-3 h-100">
+                                <i class="fa-solid fa-tv text-primary fa-2x mb-3"></i>
+                                <h4>Projector Ready</h4>
+                                <p class="text-muted">Optimized layout and hotkeys for seamless presentation during academy classroom sessions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-updateClock();
-setInterval(updateClock, 1000);
-</script>
+                <!-- 2. Constitutional Law -->
+                <div class="tab-pane fade" id="constitutional-law" role="tabpanel">
+                    <div class="card bg-black border-secondary p-4 mb-4">
+                        <h3 class="text-primary mb-3"><i class="fa-solid fa-scale-balanced me-2"></i> Constitutional Law Overview</h3>
+                        <p>Officers operate under strict adherence to state and federal constitutional limitations. Understanding these bounds ensures lawful arrests and admissible evidence in court.</p>
+                        <hr class="border-secondary">
+                        <h5 class="text-white mt-3">Key Amendments</h5>
+                        <ul class="list-group list-group-flush bg-transparent">
+                            <li class="list-group-item bg-black text-light border-secondary"><strong>4th Amendment:</strong> Protection against unreasonable searches and seizures without probable cause or warrant.</li>
+                            <li class="list-group-item bg-black text-light border-secondary"><strong>5th Amendment:</strong> Protection against self-incrimination and double jeopardy; right to due process.</li>
+                            <li class="list-group-item bg-black text-light border-secondary"><strong>6th Amendment:</strong> Right to a speedy trial, impartial jury, and legal representation.</li>
+                        </ul>
+                    </div>
+                </div>
 
+                <!-- 3. Search & Seizure -->
+                <div class="tab-pane fade" id="search-seizure" role="tabpanel">
+                    <div class="card bg-black border-secondary p-4 mb-4">
+                        <h3 class="text-primary mb-3"><i class="fa-solid fa-magnifying-glass me-2"></i> Search & Seizure Protocols</h3>
+                        <p>Searches conducted without proper legal justification risk evidence suppression under the exclusionary rule.</p>
+                        <hr class="border-secondary">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 border border-secondary rounded bg-dark">
+                                    <h5 class="text-white">Exigent Circumstances</h5>
+                                    <p class="text-muted small m-0">Immediate danger to life, imminent destruction of evidence, or hot pursuit of a fleeing suspect.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 border border-secondary rounded bg-dark">
+                                    <h5 class="text-white">Plain View Doctrine</h5>
+                                    <p class="text-muted small m-0">Officers lawfully present in a location may seize contraband instantly visible within line of sight.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Traffic Stops -->
+                <div class="tab-pane fade" id="traffic-stops" role="tabpanel">
+                    <div class="card bg-black border-secondary p-4 mb-4">
+                        <h3 class="text-primary mb-3"><i class="fa-solid fa-car-rear me-2"></i> Traffic Stop Procedures</h3>
+                        <p>Standard operating procedure for executing safe, tactical vehicle interventions.</p>
+                        <ol class="list-group list-group-numbered list-group-flush bg-transparent">
+                            <li class="list-group-item bg-black text-light border-secondary">Position cruiser offset to the left, wheels turned outward.</li>
+                            <li class="list-group-item bg-black text-light border-secondary">Call out plate, vehicle description, and occupant count to dispatch.</li>
+                            <li class="list-group-item bg-black text-light border-secondary">Perform a touch check on the rear taillight to leave fingerprints.</li>
+                            <li class="list-group-item bg-black text-light border-secondary">Approach safely maintaining visual contact with rear cabin and hands.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 5. Arrest Procedures -->
+                <div class="tab-pane fade" id="arrest-procedures" role="tabpanel">
+                    <div class="card bg-black border-secondary p-4 mb-4">
+                        <h3 class="text-primary mb-3"><i class="fa-solid fa-user-shield me-2"></i> Arrest & Control Tactics</h3>
+                        <p>Execution of physical custody requires appropriate use of force principles and safety checks.</p>
+                        <ul>
+                            <li>Control and cuff before conducting search incident to arrest.</li>
+                            <li>Double-lock handcuffs immediately to prevent nerve damage.</li>
+                            <li>Perform systematic pat-down search for weapons and contraband.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 6. Miranda Rights -->
+                <div class="tab-pane fade" id="miranda-rights" role="tabpanel">
+                    <div class="card bg-black border-secondary p-4 mb-4">
+                        <h3 class="text-primary mb-3"><i class="fa-solid fa-book-open me-2"></i> Miranda Warnings</h3>
+                        <p class="bg-dark p-3 border border-secondary rounded font-monospace text-warning">
+                            "You have the right to remain silent. Anything you say can and will be used against you in a court of law. You have the right to an attorney. If you cannot afford one, one will be appointed for you..."
+                        </p>
+                        <p class="text-muted small">Must be recited prior to custodial interrogation.</p>
+                    </div>
+                </div>
+
+                <!-- 7. Case Law -->
+                <div class="tab-pane fade" id="case-law" role="tabpanel">
+                    <div class="card bg-black border-secondary p-4 mb-4">
+                        <h3 class="text-primary mb-3"><i class="fa-solid fa-gavel me-2"></i> Precedent Case Law</h3>
+                        <p>Foundational legal rulings governing police power and civil liberties.</p>
+                        <ul>
+                            <li><strong>Terry v. Ohio:</strong> Establishes stop-and-frisk standard based on reasonable articulable suspicion.</li>
+                            <li><strong>Tennessee v. Garner:</strong> Restricts use of deadly force against fleeing unarmed suspects.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 8. Scenario Training -->
+                <div class="tab-pane fade" id="scenarios" role="tabpanel">
+                    <div class="card bg-black border-secondary p-4 mb-4">
+                        <h3 class="text-primary mb-3"><i class="fa-solid fa-brain me-2"></i> Practical Scenarios</h3>
+                        <p>Evaluate your decision making under pressure.</p>
+                        <div class="p-3 border border-secondary rounded bg-dark">
+                            <h5 class="text-white">Scenario 1: Suspicious Vehicle</h5>
+                            <p class="text-muted">A vehicle is parked in an alleyway with lights off at 3:00 AM. What is your immediate tactical action?</p>
+                            <button class="btn btn-outline-primary btn-sm" onclick="alert('Correct: Call in location, request backup, and approach with caution from cover.')">Reveal Best Practice</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Final Review -->
+                <div class="tab-pane fade" id="final-exam" role="tabpanel">
+                    <div class="card bg-black border-secondary p-4 mb-4 text-center">
+                        <h3 class="text-primary mb-3"><i class="fa-solid fa-graduation-cap me-2"></i> Final Examination</h3>
+                        <p class="text-muted">You have completed all academy modules. Ready to certify?</p>
+                        <button class="btn btn-success btn-lg mt-2" onclick="alert('Congratulations! Academy requirements completed.')">Complete Certification</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Controls Footer -->
+            <div class="d-flex justify-content-between align-items-center mt-5 pt-3 border-top border-secondary">
+                <button id="prevBtn" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-left me-2"></i> Previous</button>
+                <span id="slideIndicator" class="text-muted small">Module 1 of 9</span>
+                <button id="nextBtn" class="btn btn-primary">Next <i class="fa-solid fa-arrow-right ms-2"></i></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Script -->
+    <script src="script.js"></script>
 </body>
 </html>
