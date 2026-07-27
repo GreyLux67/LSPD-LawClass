@@ -138,15 +138,7 @@ if (slideNumber > slides.length) {
 // Slides array starts at 0
 renderSlide(slideNumber - 1);
 
-// Check every 250ms for presenter changes
-setInterval(function(){
 
-    const saved =
-        parseInt(localStorage.getItem("currentSlide") || "0");
-
-    renderSlide(saved);
-
-}, 250);
 </script>
 
 
