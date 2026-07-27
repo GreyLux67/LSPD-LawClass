@@ -100,8 +100,37 @@ function previousSlide(){
 
 }
 
-updateDisplay();
+<hr style="margin:30px 0;">
 
+<h3>Projector URL</h3>
+
+<input
+    id="projectorUrl"
+    style="width:100%;padding:12px;font-size:16px;"
+    readonly>
+
+<br><br>
+
+<button onclick="copyProjectorUrl()">
+    Copy Projector URL
+</button>
+updateDisplay();
+const url =
+    "https://greylux67.github.io/LSPD-LawClass/projector.html?slide="
+    + (currentSlide + 1);
+
+document.getElementById("projectorUrl").value = url;
+
+    function copyProjectorUrl(){
+
+    const box =
+        document.getElementById("projectorUrl");
+
+    box.select();
+
+    navigator.clipboard.writeText(box.value);
+
+    alert("Projector URL copied!");
 </script>
 
 </body>
