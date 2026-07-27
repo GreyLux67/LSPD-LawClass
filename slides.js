@@ -9,5 +9,17 @@ const slides = [
             "Traffic Stops",
             "Miranda Rights"
         ]
+    },
+
+    {
+        eyebrow: "MODULE 1",
+        title: "Constitutional Law",
+        subtitle: "Understanding the Constitution",
+        bullets: [
+            "Fourth Amendment",
+            "Reasonable Suspicion",
+            "Probable Cause",
+            "Search Warrants"
+        ]
     }
 ];
