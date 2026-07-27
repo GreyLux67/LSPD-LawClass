@@ -1,62 +1,53 @@
 const slides = [
+
     {
         eyebrow: "LOS SANTOS POLICE DEPARTMENT",
+
         title: "Law Class",
+
         subtitle: "Course Objectives",
-        body: "By the end of this class you should be able to",
+
+        body: "By the end of this class, you should be able to:",
+
         bullets: [
-            "Constitutional Law",
-            "Search and Seizure",
-            "Traffic Stops",
-            "Miranda Rights"
-        ]
+            "Explain the Fourth Amendment",
+            "Define reasonable suspicion",
+            "Define probable cause",
+            "Recognize lawful and unlawful searches"
+        ],
+
+        quote: "",
+
+        scenario: "",
+
+        warning: "",
+
+        image: ""
     },
 
     {
         eyebrow: "MODULE 1",
-        title: "Constitutional Law",
-        subtitle: "Understanding the Constitution",
-        bullets: [
-            "Fourth Amendment",
-            "Reasonable Suspicion",
-            "Probable Cause",
-            "Search Warrants"
-        ]
-    },
 
-    {
-        eyebrow: "MODULE 1",
         title: "Constitutional Law",
-        subtitle: "Understanding the Constitution",
-        bullets: [
-            "Fourth Amendment",
-            "Reasonable Suspicion",
-            "Probable Cause",
-            "Search Warrants"
-        ]
-    },
 
-    {
-        eyebrow: "MODULE 1",
-        title: "Constitutional Law",
-        subtitle: "Understanding the Constitution",
-        bullets: [
-            "Fourth Amendment",
-            "Reasonable Suspicion",
-            "Probable Cause",
-            "Search Warrants"
-        ]
-    },
+        subtitle: "The Fourth Amendment",
 
-    {
-        eyebrow: "MODULE 1",
-        title: "Constitutional Law",
-        subtitle: "Understanding the Constitution",
+        body: "The Fourth Amendment protects people from unreasonable searches and seizures.",
+
         bullets: [
-            "Fourth Amendment",
-            "Reasonable Suspicion",
-            "Probable Cause",
-            "Search Warrants"
-        ]
-    },
+            "Government action must be reasonable",
+            "Some searches require a warrant",
+            "Some warrant exceptions apply",
+            "Evidence may be excluded after an unlawful search"
+        ],
+
+        quote: "The right of the people to be secure in their persons, houses, papers, and effects shall not be violated.",
+
+        scenario: "An officer stops a driver for speeding. The driver refuses consent to search the vehicle. What additional facts would the officer need before conducting a search?",
+
+        warning: "Nervous behavior by itself does not automatically create probable cause.",
+
+        image: ""
+    }
+
 ];
