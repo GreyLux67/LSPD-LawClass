@@ -67,7 +67,7 @@ const slides = [
         body: "Levels of Burdens of Proof",
         "I. Reasonable Suspicion",
         "II. Probable Cause",
-        "III. Preponderance of Evidence - Civil Suits"
+        "III. Preponderance of Evidence - Civil Suits",
 
         bullets: [
 
