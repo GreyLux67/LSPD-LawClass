@@ -253,16 +253,32 @@
         }
 
         function setTextElement(id, value) {
-            const element = document.getElementById(id);
 
-            if (hasText(value)) {
-                element.textContent = value;
-                element.classList.remove("hidden");
-            } else {
-                element.textContent = "";
-                element.classList.add("hidden");
-            }
+    const element = document.getElementById(id);
+
+    if (hasText(value)) {
+
+        if (id === "body") {
+            element.innerHTML = value;
+        } else {
+            element.textContent = value;
         }
+
+        element.classList.remove("hidden");
+
+    } else {
+
+        if (id === "body") {
+            element.innerHTML = "";
+        } else {
+            element.textContent = "";
+        }
+
+        element.classList.add("hidden");
+
+    }
+
+}
 
         function renderSlide(index) {
             const slide = slides[index];
