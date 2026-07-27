@@ -10,10 +10,15 @@ const slides = [
         body: "By the end of this class, you should be able to:",
 
         bullets: [
-            "Explain the Fourth Amendment",
-            "Define reasonable suspicion",
-            "Define probable cause",
-            "Recognize lawful and unlawful searches"
+            "Explain every stage of a court case",
+            "Understand the responsibilities of police officers during court",
+            "Properly testify as a witness",
+            "Recognize attorney tactics",
+            "Understand objections",
+            "Know when evidence becomes inadmissible",
+            "Properly present reports and bodycam evidence",
+            "Maintain courtroom professionalism"
+            
         ],
 
         quote: "",
