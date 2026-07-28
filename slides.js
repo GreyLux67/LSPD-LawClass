@@ -99,6 +99,50 @@ const slides = [
         warning: "",
 
         image: ""
+    },
+
+     {
+        eyebrow: "Module 1 Legal Information",
+
+        title: "General Terms",
+
+        subtitle: "",
+
+        body: "<strong>Pro Se</strong>\nOn one's own behalf or for oneself, is when an individual decides to proceed in a legal matter without representation. This is allowed but highly discouraged.\n<strong>Ex Parte</strong>\nThe improper use of any court officer representing a party in an ongoing case to approach a judge or the opposing party without counsel to discuss details of an ongoing matter without all other parties present. - Can result in the recusal of counsel and/or judge and/or dismissal of a case in some instances.",
+
+        bullets: [
+
+        ],
+
+        quote: "",
+
+        scenario: "",
+
+        warning: "",
+
+        image: ""
+    },
+
+ {
+        eyebrow: "Module 1 Legal Information",
+
+        title: "General Terms",
+
+        subtitle: "",
+
+        body: "<strong>Double",
+
+        bullets: [
+
+        ],
+
+        quote: "",
+
+        scenario: "",
+
+        warning: "",
+
+        image: ""
     }
     
 ];
